@@ -7,19 +7,14 @@ import * as data from './_data';
 import { useParams } from 'next/navigation';
 
 const Board = () => {
-    // const [data, setData] = useState(initialData);
-    const [project, setProject] = useState<data.Project>({} as data.Project)
     const [list, setList] = useState<data.List>({} as data.List)
     const [columns, setColumns] = useState<data.Column[]>([] as data.Column[])
     const [isLoading, setIsLoading] = useState(true)
     const router = useParams()
 
-    useEffect(() => {
-        const project = data.projects.find((p) => p.id === router?.idp);
-        project && setProject(project);
-    
+    useEffect(() => {    
         const list = data.lists.find((l) => l.id === router?.idl);
-        list && setList(list);
+        if (list) setList(() => list);
     
         if (list) {
             const filteredColumns = data.columns
@@ -49,18 +44,18 @@ const Board = () => {
         }
     
         // Encontra a coluna de origem e a coluna de destino
-        const startColumn: any = columns.find((c) => c.id === source.droppableId);
-        const finishColumn: any = columns.find((c) => c.id === destination.droppableId);
+        const startColumn = columns.find((c) => c.id === source.droppableId);
+        const finishColumn = columns.find((c) => c.id === destination.droppableId);
     
         if (!startColumn || !finishColumn) return;
     
         // Encontra a tarefa que está sendo movida
-        const taskToMove = startColumn.tasks.find((t: any) => t.id === draggableId);
+        const taskToMove = startColumn.tasks?.find((t) => t.id === draggableId);
         if (!taskToMove) return;
     
         // Se a tarefa for movida dentro da mesma coluna
         if (startColumn.id === finishColumn.id) {
-            const newTasks = Array.from(startColumn.tasks);
+            const newTasks = Array.from(startColumn.tasks!);
             newTasks.splice(source.index, 1); // Remove a tarefa da posição original
             newTasks.splice(destination.index, 0, taskToMove); // Insere a tarefa na nova posição
     
@@ -73,10 +68,10 @@ const Board = () => {
         }
     
         // Se a tarefa for movida para outra coluna
-        const startTasks = Array.from(startColumn.tasks);
+        const startTasks = Array.from(startColumn.tasks!);
         startTasks.splice(source.index, 1); // Remove a tarefa da coluna de origem
     
-        const finishTasks = Array.from(finishColumn.tasks);
+        const finishTasks = Array.from(finishColumn.tasks!);
         finishTasks.splice(destination.index, 0, taskToMove); // Adiciona a tarefa na coluna de destino
     
         const updatedColumns = columns.map((c) => {
@@ -117,8 +112,8 @@ const Board = () => {
                             }}
                         >
                             {list.columnsOrder.map((columnId, index) => {
-                                const column:any = columns.find((c) => c.id === columnId);
-                                const tasks = column.tasks;
+                                const column = columns.find((c) => c.id === columnId);
+                                const tasks = column?.tasks;
 
                                 return (
                                     <Column

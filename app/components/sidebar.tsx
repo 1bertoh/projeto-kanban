@@ -1,5 +1,5 @@
 'use client'
-import { ArrowDown, Calendar, ChartBar, ChevronDown, FormInputIcon, Home, HomeIcon, Inbox, InboxIcon, MoreHorizontal, Pen, Search, Settings } from "lucide-react"
+import { ChevronDown, HomeIcon, InboxIcon, MoreHorizontal } from "lucide-react"
 
 import {
   Sidebar,
@@ -19,11 +19,10 @@ import {
 
 import { useState } from "react"
 import { Divider } from "@heroui/react"
-import Image from "next/image"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { List, lists, Project, projects } from "./_data"
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 // Menu items.
 const items = [
@@ -55,12 +54,10 @@ const projeto = {
 }
 
 export function AppSidebar() {
-  const [state, setState] = useState<'collapsed' | 'expanded'>('expanded')
   return (
     <Sidebar
       className="overflow-hidden"
       collapsible="icon"
-      changeState={(s) => setState(s)}
     >
       <SidebarHeader className="py-5 w-full">
         <Select value="c3" >

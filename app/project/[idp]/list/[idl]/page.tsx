@@ -5,12 +5,10 @@ import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import * as data from '../../../../components/_data'
 
-type Props = {}
-
-const Page = (props: Props) => {
+const Page = () => {
     const params = useParams()
-  const [project, setProject] = useState(data.projects.find((p) => p.id === params.idp))
-  const [list, setList] = useState(data.lists.find((l) => l.id === params.idl))
+  const [project] = useState(data.projects.find((p) => p.id === params.idp))
+  const [list] = useState(data.lists.find((l) => l.id === params.idl))
 
     useEffect(() => {
 

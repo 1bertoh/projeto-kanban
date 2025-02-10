@@ -2,9 +2,7 @@ import React from 'react'
 import Card from '../components/card'
 import { Briefcase, Calendar, Clock, List, User2 } from 'lucide-react'
 
-type Props = {}
-
-const Page = (props: Props) => {
+const Page = () => {
   return (
     <div>
       <h1>Olá, Humberto</h1>

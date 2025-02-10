@@ -13,7 +13,7 @@ type props = {
 }
 
 const Column = (props: props) => {
-    const { column, index, tasks } = props
+    const { column, tasks } = props
   return (
     <div
         className='m-2 border-1 border-slate-500 rounded-sm w-64 flex flex-col bg-zinc-900 h-full'

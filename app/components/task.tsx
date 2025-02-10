@@ -1,6 +1,6 @@
 'use client'
-// src/components/Task.jsx
-import React, { HTMLAttributes, useState } from 'react';
+
+import React, { useState } from 'react';
 import { Draggable } from '@hello-pangea/dnd';
 import * as data from './_data';
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Input, Modal, ModalBody, ModalContent, ModalHeader, Textarea, useDisclosure } from '@heroui/react';
@@ -55,17 +55,17 @@ const Task = (props: props) => {
 type TTaskModal = {
   task: data.Task;
   index: number;
-  onOpen: Function;
+  onOpen: () => void;
   onOpenChange: () => void;
   isModalOpen: boolean
 }
 
 const TaskModal = (props: TTaskModal) => {
-  const { index, task, onOpen, onOpenChange, isModalOpen } = props
+  const { task, onOpenChange, isModalOpen } = props
   const params = useParams()
-  const [project, setProject] = useState(data.projects.find((p) => p.id === params.idp))
-  const [list, setList] = useState(data.lists.find((l) => l.id === params.idl))
-  const [column, setColumn] = useState(data.columns.find((c) => c.id === task.column)!)
+  const [project] = useState(data.projects.find((p) => p.id === params.idp))
+  const [list] = useState(data.lists.find((l) => l.id === params.idl))
+  const [column] = useState(data.columns.find((c) => c.id === task.column)!)
 
   return (
     <Modal
@@ -232,7 +232,7 @@ type TChat = {
   column: data.Column
 }
 const Chat = (props: TChat) => {
-  const {column, task} = props
+  const { task} = props
 
   return (
     <div className='w-4/12 h-full bg-zinc-950 flex flex-col'>

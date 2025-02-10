@@ -178,6 +178,10 @@ const Sidebar = React.forwardRef<
     ref
   ) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+    
+    React.useEffect(() => {
+      if (changeState) changeState(state)
+    }, [state])
 
     if (collapsible === "none") {
       return (
@@ -213,10 +217,6 @@ const Sidebar = React.forwardRef<
         </Sheet>
       )
     }
-
-    React.useEffect(() => {
-      changeState && changeState(state)
-    }, [state])
 
     return (
       <div

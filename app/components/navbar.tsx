@@ -4,16 +4,8 @@ import React from "react";
 import {
   Navbar as NavbarUi,
   NavbarBrand,
-  NavbarMenuToggle,
-  NavbarMenuItem,
-  NavbarMenu,
   NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
 } from "@heroui/react";
-import Dropdown from "./dropdown";
-import { Settings } from "lucide-react";
 
 export const AcmeLogo = () => {
   return (
@@ -29,20 +21,6 @@ export const AcmeLogo = () => {
 };
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
 
   return (
     <NavbarUi maxWidth="full">
@@ -59,8 +37,7 @@ export default function Navbar() {
           <p className="font-bold text-inherit">DUGRAN</p>
         </NavbarBrand>
       </NavbarContent>
-
-        <Dropdown
+        {/* <Dropdown
             items={[
                 {
                     color: 'danger',
@@ -70,7 +47,7 @@ export default function Navbar() {
             ]}
         >
             <Settings/>
-        </Dropdown>
+        </Dropdown> */}
     </NavbarUi>
   );
 }

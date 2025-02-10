@@ -14,6 +14,7 @@ export interface Column {
     id: string;
     title: string;
     listId: string;
+    tasks?: Task[]
 }
 
 export interface Task {
