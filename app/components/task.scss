@@ -1,0 +1,34 @@
+table{
+    & td {
+        padding: 0.5rem;
+        & .etiquetas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            & span {
+                padding: 0.2rem;
+                border-radius: 0.2rem;
+                background-color: aquamarine;
+                color: black;
+                font-size: 0.8rem
+            }
+        };
+        & .responsaveis{
+            display: flex;
+            flex-wrap: wrap;
+            grid-area: 0.2rem;
+            & span {
+                padding: 0.3rem;
+                border-radius: 999px;
+                background-color: #8b4513
+            }
+        }
+    };
+    & span {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+}
+
