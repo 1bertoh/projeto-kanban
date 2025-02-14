@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { HeroUIProvider } from "@heroui/react";
 
 import "./globals.css";
-// import Navbar from "./components/navbar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./components/sidebar";
-// import { AppSidebar } from "./components/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,18 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased pt-6 pe-6`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen w-full`}
       >
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarTrigger />
-          <main className="w-full">
-            <HeroUIProvider>
-              {/* <Navbar /> */}
-              {children}
-            </HeroUIProvider>
-          </main>
-        </SidebarProvider>
+        <main className="w-full">
+          {children}
+        </main>
       </body>
     </html>
   );

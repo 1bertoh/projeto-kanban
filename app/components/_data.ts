@@ -86,16 +86,21 @@ export const projects: Project[] = [
 ];
 
 export const lists: List[] = [
-    { id: '1', name: 'Sprint Atual', columnsOrder: ['column-1', 'column-2', 'column-3'], projectId: '1' },
-    { id: '2', name: 'Backlog', columnsOrder: ['column-4', 'column-5'], projectId: '2' },
+    { id: '1', name: 'Contatos via ADS', columnsOrder: ['column-1', 'column-2', 'column-3', 'column-4', 'column-5'], projectId: '1' },
+    { id: '2', name: 'Contatos orgânicos', columnsOrder: ['column-6', 'column-7', 'column-8', 'column-9', 'column-10'], projectId: '2' },
 ];
 
 export const columns: Column[] = [
-    { id: 'column-1', title: 'Para Fazer', listId: '1' },
-    { id: 'column-2', title: 'Fazendo', listId: '1' },
-    { id: 'column-3', title: 'Feito', listId: '1' },
-    { id: 'column-4', title: 'Backlog de Features', listId: '2' },
-    { id: 'column-5', title: 'Bugs Pendentes', listId: '2' },
+    { id: 'column-1', title: 'Prospecção', listId: '1' },
+    { id: 'column-2', title: 'Contato Efetuado', listId: '1' },
+    { id: 'column-3', title: 'Proposta Enviada', listId: '1' },
+    { id: 'column-4', title: 'Proposta Fechada', listId: '1' },
+    { id: 'column-5', title: 'Proposta não Fechada', listId: '1' },
+    { id: 'column-6', title: 'Prospecção', listId: '2' },
+    { id: 'column-7', title: 'Contato Efetuado', listId: '2' },
+    { id: 'column-8', title: 'Proposta Enviada', listId: '2' },
+    { id: 'column-9', title: 'Proposta Fechada', listId: '2' },
+    { id: 'column-10', title: 'Proposta não Fechada', listId: '2' },
 ];
 
 export const messages: Message[] = [
@@ -143,5 +148,18 @@ export const tasks: Task[] = [
         responsaveis: [users[2]],
         timeLeft: '2 dias',
         column: 'column-3',
+    },
+    {
+        id: 'task-4',
+        title: 'Corrigir bug no cadastro de usuários',
+        description: 'Erro ao cadastrar usuários novos.',
+        startDate: '07-02-2025',
+        endDate: '09-02-2025',
+        etiquetas: [etiquetas[3]],
+        messages: messages.filter(m => m.id_task === 'task-3'),
+        prioridade: prioridades[2],
+        responsaveis: [users[2]],
+        timeLeft: '2 dias',
+        column: 'column-4',
     },
 ];

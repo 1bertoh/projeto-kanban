@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../components/card'
+import Card from '../../components/card'
 import { Briefcase, Calendar, Clock, List, User2 } from 'lucide-react'
 
 const Page = () => {

@@ -5,49 +5,92 @@ import {
   Navbar as NavbarUi,
   NavbarBrand,
   NavbarContent,
+  User,
+  Dropdown,
+  DropdownTrigger,
+  Button,
+  DropdownMenu,
+  DropdownItem,
 } from "@heroui/react";
-
-export const AcmeLogo = () => {
-  return (
-    <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
-      <path
-        clipRule="evenodd"
-        d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-        fill="currentColor"
-        fillRule="evenodd"
-      />
-    </svg>
-  );
-};
+import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
+
+  const items = [
+    {
+      key: "user",
+      label: "Meus dados",
+      link: "#",
+    },
+    {
+      key: "users",
+      label: "Usuários",
+      link: "/usuarios",
+    },
+    {
+      key: "clientes",
+      label: "Clientes",
+      link: "/clientes",
+    },
+    {
+      key: "crm",
+      label: "CRM",
+      link: "/crm/configurar",
+    },
+    {
+      key: "delete",
+      label: "Sair",
+      link: "/home",
+    },
+  ];
 
   return (
     <NavbarUi maxWidth="full">
       <NavbarContent className="sm:hidden pr-3" justify="start">
         <NavbarBrand>
-          {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">DUGRAN</p>
+          <a href={'/home'} className="cursor-pointer">
+            <p className="font-bold text-inherit">C3 CRM</p>
+          </a>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex " justify="start">
         <NavbarBrand>
-          {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">DUGRAN</p>
+          <a href="/home">
+            <p className="font-bold text-inherit">C3 CRM</p>
+          </a>
         </NavbarBrand>
       </NavbarContent>
-        {/* <Dropdown
-            items={[
-                {
-                    color: 'danger',
-                    key: '1',
-                    label: 'Sair'
-                }
-            ]}
-        >
-            <Settings/>
-        </Dropdown> */}
+      <NavbarContent className="hidden sm:flex " justify="end">
+        <User
+          avatarProps={{
+            src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+          }}
+          name="Jane Doe"
+        />
+        <Dropdown>
+          <DropdownTrigger>
+            <Button variant="light">
+              Menu 
+              <ChevronDown/>  
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Dynamic Actions" items={items}>
+            {(item) => (
+              <DropdownItem
+                key={item.key}
+                className={item.key === "delete" ? "text-danger" : ""}
+                color={item.key === "delete" ? "danger" : "default"}
+              >
+                <Link href={item.link!}>
+                {item.label}
+                </Link>
+              </DropdownItem>
+            )}
+          </DropdownMenu>
+        </Dropdown>
+      </NavbarContent>
     </NavbarUi>
   );
 }

@@ -2,17 +2,13 @@
 import Board from '@/app/components/board'
 import { Divider } from '@heroui/react'
 import { useParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
-import * as data from '../../../../components/_data'
+import React, { useState } from 'react'
+import * as data from '../../../../../../components/_data'
 
 const Page = () => {
     const params = useParams()
-  const [project] = useState(data.projects.find((p) => p.id === params.idp))
-  const [list] = useState(data.lists.find((l) => l.id === params.idl))
-
-    useEffect(() => {
-
-    }, [])
+    const [project] = useState(data.projects.find((p) => p.id === params.idp))
+    const [list] = useState(data.lists.find((l) => l.id === params.idl))
 
     return (
         <div className="App">

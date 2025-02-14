@@ -1,5 +1,5 @@
 'use client'
-import { ChevronDown, HomeIcon, InboxIcon, MoreHorizontal } from "lucide-react"
+import { ChevronDown, HomeIcon, MoreHorizontal } from "lucide-react"
 
 import {
   Sidebar,
@@ -34,11 +34,11 @@ const items = [
         url: "/home",
         icon: HomeIcon,
       },
-      {
-        title: "Caixa de Entrada",
-        url: "/inbox",
-        icon: InboxIcon,
-      },
+      // {
+      //   title: "Caixa de Entrada",
+      //   url: "/inbox",
+      //   icon: InboxIcon,
+      // },
     ],
   },
 ]
@@ -168,7 +168,7 @@ const CollapsibleItem = (props: TCollapsibleItem) => {
           <SidebarMenuSub>
             {pro.listas.map((l) => (
               <SidebarMenuSubItem key={l.id}>
-                <a href={`/project/${pro.projeto.id}/list/${l.id}`}>{l.name}</a>
+                <a href={`/crm/project/${pro.projeto.id}/list/${l.id}`}>{l.name}</a>
               </SidebarMenuSubItem>
             ))}
           </SidebarMenuSub>
